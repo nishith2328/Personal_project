@@ -1,0 +1,99 @@
+.surprise-box-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+ 
+    padding: 20px;
+  }
+  
+  .box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #d32f2f; /* Red box */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  .bow {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .bow-left,
+  .bow-right {
+    width: 40px;
+    height: 40px;
+    background-color: #ffeb3b; /* Yellow bow */
+    border-radius: 50%;
+    position: absolute;
+  }
+  
+  .bow-left {
+    left: 0;
+    transform: rotate(-45deg);
+  }
+  
+  .bow-right {
+    right: 0;
+    transform: rotate(45deg);
+  }
+  
+  .bow-center {
+    width: 20px;
+    height: 20px;
+    background-color: #ffeb3b; /* Yellow bow */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .box-lid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: #b71c1c; /* Darker red lid */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: transform 0.5s ease;
+  }
+  
+  .box.open .box-lid {
+    transform: rotate(-15deg) translateY(-20px);
+  }
+  
+  .box-body {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    background-color: #d32f2f; /* Red box body */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .surprise-message {
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    padding: 20px;
+  }

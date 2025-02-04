@@ -1,0 +1,50 @@
+.date-invitation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    padding: 20px;
+  }
+  
+  .date-invitation-container h2 {
+    font-size: 2rem;
+    color: #d32f2f; /* Red text */
+    margin-bottom: 20px;
+  }
+  
+  .date-invitation-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .date-invitation-container input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #d32f2f;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .date-invitation-container button {
+    padding: 10px 20px;
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .date-invitation-container button:hover {
+    background-color: #b71c1c;
+  }
+  
+  .date-invitation-container p {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #d32f2f;
+  }
