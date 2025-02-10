@@ -1,50 +1,100 @@
 .date-invitation-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #fff5f5; /* Light pinkish background */
+}
 
-    padding: 20px;
-  }
-  
+.date-invitation-container h2 {
+  font-size: 2rem;
+  color: #d32f2f; /* Red text */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.date-invitation-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.date-invitation-container input {
+  padding: 12px;
+  width: 100%;
+  max-width: 300px;
+  border: 2px solid #d32f2f;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.date-invitation-container input:focus {
+  outline: none;
+  border-color: #b71c1c;
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.5);
+}
+
+.date-invitation-container button {
+  padding: 12px 25px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  position: relative;
+  min-width: 160px;
+}
+
+.date-invitation-container button:hover {
+  background-color: #b71c1c;
+}
+
+/* Loading effect for button */
+.date-invitation-container button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.date-invitation-container button:disabled::after {
+  content: '⏳ Sending...';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+}
+
+/* Success and error messages */
+.date-invitation-container p {
+  margin-top: 20px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.date-invitation-container p.success {
+  color: #388e3c; /* Green for success */
+}
+
+.date-invitation-container p.error {
+  color: #d32f2f; /* Red for errors */
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
   .date-invitation-container h2 {
-    font-size: 2rem;
-    color: #d32f2f; /* Red text */
-    margin-bottom: 20px;
+    font-size: 1.5rem;
   }
-  
-  .date-invitation-container form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-  
+
   .date-invitation-container input {
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #d32f2f;
-    border-radius: 5px;
-    font-size: 1rem;
+    width: 90%;
   }
-  
-  .date-invitation-container button {
-    padding: 10px 20px;
-    background-color: #d32f2f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .date-invitation-container button:hover {
-    background-color: #b71c1c;
-  }
-  
-  .date-invitation-container p {
-    margin-top: 20px;
-    font-size: 1rem;
-    color: #d32f2f;
-  }
+}

@@ -1,49 +1,42 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './DateInvitation.css';
+import emailjs from '@emailjs/browser';
+import './DateInvitation.css'
+
 
 const DateInvitation = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
-
-  // Dynamically determine API URL based on environment
-  const API_URL = process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5000/send-email'
-    : '/send-email'; // This will work on Vercel
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setMessage('');
+
+    const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const userID = process.env.REACT_APP_EMAILJS_USER_ID;
+
+    const templateParams = {
+      to_email: email,
+      message: 'Hey love, I can’t wait to see you on our special date! Be ready for surprises! 💖',
+    };
 
     try {
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          to: email,
-          subject: 'Valentine’s Date Invitation 💌',
-          text: 'Hey love, I can’t wait to see you on our special date! Be ready and I will pick you up for our date! 💖',
-        }),
-      });
-
-      const result = await response.text();
-      setMessage(result);
-
-      if (response.ok) {
-        alert('Invitation sent successfully! Check your email.');
-        navigate('/'); // Redirect to the landing page
-      } else {
-        alert('Failed to send the invitation. Please try again.');
-      }
+      await emailjs.send(serviceID, templateID, templateParams, userID);
+      setMessage('Invitation sent successfully! Check your email.');
+      setEmail('');
     } catch (error) {
       console.error('Error sending email:', error);
-      alert('Something went wrong! Please try again later.');
+      setMessage('Failed to send invitation. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="date-invitation-container">
-      <h2>There is a date waiting for you 💑</h2>
+      <h2>Invite Me on a Date 💑</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -52,7 +45,9 @@ const DateInvitation = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <button type="submit">Get Details 😉</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Sending...' : 'Send Invitation'}
+        </button>
       </form>
       {message && <p>{message}</p>}
     </div>
