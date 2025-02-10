@@ -13,9 +13,9 @@ const DateInvitation = () => {
     setLoading(true);
     setMessage('');
 
-    const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-    const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const userID = process.env.REACT_APP_EMAILJS_USER_ID;
+    const serviceID ="service_blan865";
+    const templateID = "template_f2yizji";
+    const userID = "APeIBU8p22orfh82h";
 
     const templateParams = {
       to_email: email,
