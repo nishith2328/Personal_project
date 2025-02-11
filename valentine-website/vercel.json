@@ -1,11 +1,18 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/send-email.js", "use": "@vercel/node" },  
-    { "src": "package.json", "use": "@vercel/static-build" }  
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    },
+    {
+      "src": "api/send-email.js",
+      "use": "@vercel/node"
+    }
   ],
   "routes": [
-    { "src": "/send-email", "dest": "/api/send-email.js" },  
-    { "src": "/(.*)", "dest": "/" } 
+    { "src": "/send-email", "dest": "/api/send-email.js" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
